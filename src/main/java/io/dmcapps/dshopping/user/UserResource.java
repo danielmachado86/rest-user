@@ -69,16 +69,27 @@ public class UserResource {
     @POST
     public Response createUser(
         User user, @Context UriInfo uriInfo) {
+        Response response = createAuthUser(user);
+        user.id = getURI(response); // assign user id from auth user
+        user = service.persistUser(user);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(user.id.toString());
+        LOGGER.debug("New user created with URI " + builder.build().toString());
+        return Response.created(builder.build()).build();
+    }
+
+    private String getURI(Response response) {
+        String[] splittedUrl = response.getLocation().toString().split("/");
+        String uri = splittedUrl[splittedUrl.length - 1];
+        return uri;
+    }
+
+    private Response createAuthUser(User user) {
         String authorizationHeader = createBasicAuthHeaderValue(clientId, secret);
         AuthToken token = authService.getToken(authorizationHeader, grantType);
         LOGGER.info(token.access_token);
         AuthUser authUser = new AuthUser(user);
         Response response = authService.createUser("Bearer " + token.access_token, authUser);
-        user.id = response.getLocation().toString().split("/")[8];
-        user = service.persistUser(user);
-        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(user.id.toString());
-        LOGGER.debug("New user created with URI " + builder.build().toString());
-        return Response.created(builder.build()).build();
+        return response;
     }
 
     private String createBasicAuthHeaderValue(String clientId, String secret) {
