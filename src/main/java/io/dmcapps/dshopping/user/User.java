@@ -21,19 +21,11 @@ public class User extends PanacheMongoEntityBase {
     public String name;
     public String email;
     public String mobile;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @BsonIgnore
-    private AuthCredential credential; 
+    public AuthCredential credential; 
     public ArrayList<ObjectId> addresses;
     public Instant date_created;
     public Instant date_updated;
-    
-	public AuthCredential getCredential() {
-        return credential;
-    }
-    
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	public void setCredential(AuthCredential credential) {
-		this.credential = credential;
-	}
 
 }

@@ -55,9 +55,7 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     @NoCache
     public Response getUser() {
-        LOGGER.info("trying to create user");
         String id = jwt.getSubject();
-        LOGGER.info(id);
         User user = service.findUserById(id);
         if (user != null) {
             LOGGER.debug("Found user " + user);
