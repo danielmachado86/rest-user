@@ -1,7 +1,5 @@
 package io.dmcapps.dshopping.user.client;
 
-import org.jboss.logging.Logger;
-
 public class AuthCredential {
 
     public String type = "password";
