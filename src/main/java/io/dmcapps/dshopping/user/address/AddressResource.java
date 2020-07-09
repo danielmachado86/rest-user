@@ -1,4 +1,4 @@
-package io.dmcapps.dshopping.user;
+package io.dmcapps.dshopping.user.address;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -46,7 +46,7 @@ public class AddressResource {
     @APIResponses(value = {
         @APIResponse(responseCode = "401", description = "Unauthorized Error"),
         @APIResponse(responseCode = "204", description = "No addresses"),
-        @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = User.class, type = SchemaType.ARRAY))),
+        @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Address.class, type = SchemaType.ARRAY))),
     })
     @GET
     @Path("/{user_id}/addresses")

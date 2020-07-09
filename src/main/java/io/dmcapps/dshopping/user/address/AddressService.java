@@ -1,4 +1,4 @@
-package io.dmcapps.dshopping.user;
+package io.dmcapps.dshopping.user.address;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;

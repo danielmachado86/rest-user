@@ -1,4 +1,4 @@
-package io.dmcapps.dshopping.user;
+package io.dmcapps.dshopping.user.address;
 
 
 public class Location {
