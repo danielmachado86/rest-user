@@ -39,10 +39,8 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
-import org.jboss.resteasy.annotations.cache.NoCache;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
 import io.dmcapps.dshopping.user.client.AuthService;
 import io.dmcapps.dshopping.user.client.AuthToken;
@@ -207,10 +205,4 @@ public class UserResource {
         return Response.noContent().build();
     }
     
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    @Path("/hello")
-    public String hello() {
-        return "hello";
-    }
 }
