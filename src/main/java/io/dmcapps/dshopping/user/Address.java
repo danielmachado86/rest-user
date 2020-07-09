@@ -23,6 +23,7 @@ public class Address extends PanacheMongoEntityBase {
     @BsonId
     @JsonSerialize(using = ToStringSerializer.class)
     public ObjectId id;
+    public String user;
     public  String name;
     public  String city;
     public  String address_line1;
