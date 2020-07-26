@@ -141,6 +141,8 @@ public class UserResource {
     public Response createUser(
         @RequestBody(required = true, content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = User.class)))
         @Valid User user, @Context UriInfo uriInfo) {
+        LOGGER.info("Trying to add new user " + user.credential.type);
+        user.credential.value = user.password;
         Response response = createAuthUser(user);
         user.id = getURI(response); // assign user id from auth user
         user = service.persistUser(user);

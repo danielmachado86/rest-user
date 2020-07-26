@@ -23,7 +23,10 @@ public class User extends PanacheMongoEntityBase {
     public String mobile;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @BsonIgnore
-    public AuthCredential credential; 
+    public AuthCredential credential = new AuthCredential(); 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @BsonIgnore
+    public String password; 
     public ArrayList<ObjectId> addresses;
     public Instant date_created;
     public Instant date_updated;
