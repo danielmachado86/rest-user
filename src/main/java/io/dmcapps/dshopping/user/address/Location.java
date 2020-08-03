@@ -1,8 +1,9 @@
 package io.dmcapps.dshopping.user.address;
 
+import java.util.ArrayList;
 
 public class Location {
 
     public String type;
-    public double[] coordinates = new double[2];
+    public ArrayList<Double> coordinates;
 }
